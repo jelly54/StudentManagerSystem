@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.stuManager.dao.ManagerMapper" >
+  <resultMap id="BaseResultMap" type="com.stuManager.bean.Manager" >
+    <id column="m_id" property="mId" jdbcType="INTEGER" />
+    <result column="m_name" property="mName" jdbcType="VARCHAR" />
+    <result column="m_pass" property="mPass" jdbcType="VARCHAR" />
+    <result column="m_authority" property="mAuthority" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    m_id, m_name, m_pass, m_authority
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from manager
+    where m_id = #{mId,jdbcType=INTEGER}
+  </select>
+  <select id="checkLogin" resultType="string" parameterType="com.stuManager.bean.Manager" >
+  	select m_pass from manager where m_name = #{mName}
+  </select>
+   <select id="selectByName" resultMap="BaseResultMap" parameterType="string" >
+    select 
+    <include refid="Base_Column_List" />
+    from manager
+    where m_name = #{mName,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from manager
+    where m_id = #{mId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.stuManager.bean.Manager" >
+    insert into manager (m_id, m_name, m_pass, 
+      m_authority)
+    values (#{mId,jdbcType=INTEGER}, #{mName,jdbcType=VARCHAR}, #{mPass,jdbcType=VARCHAR}, 
+      #{mAuthority,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.stuManager.bean.Manager" >
+    insert into manager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        m_id,
+      </if>
+      <if test="mName != null" >
+        m_name,
+      </if>
+      <if test="mPass != null" >
+        m_pass,
+      </if>
+      <if test="mAuthority != null" >
+        m_authority,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        #{mId,jdbcType=INTEGER},
+      </if>
+      <if test="mName != null" >
+        #{mName,jdbcType=VARCHAR},
+      </if>
+      <if test="mPass != null" >
+        #{mPass,jdbcType=VARCHAR},
+      </if>
+      <if test="mAuthority != null" >
+        #{mAuthority,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.stuManager.bean.Manager" >
+    update manager
+    <set >
+      <if test="mName != null" >
+        m_name = #{mName,jdbcType=VARCHAR},
+      </if>
+      <if test="mPass != null" >
+        m_pass = #{mPass,jdbcType=VARCHAR},
+      </if>
+      <if test="mAuthority != null" >
+        m_authority = #{mAuthority,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.stuManager.bean.Manager" >
+    update manager
+    set m_name = #{mName,jdbcType=VARCHAR},
+      m_pass = #{mPass,jdbcType=VARCHAR},
+      m_authority = #{mAuthority,jdbcType=VARCHAR}
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPName" parameterType="com.stuManager.bean.Manager" >
+    update manager
+    set m_name = #{mName,jdbcType=VARCHAR},
+      m_pass = #{mPass,jdbcType=VARCHAR},
+      m_authority = #{mAuthority,jdbcType=VARCHAR}
+    where m_name = #{mName,jdbcType=VARCHAR}
+  </update>
+</mapper>
