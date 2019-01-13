@@ -7,10 +7,13 @@ package com.stuManager.util;
  */
 public class Page {
 	private int itemCont;// 总数据数目
+	@SuppressWarnings("unused")
 	private int pageCont;// 总页数
 	private int pageCurrent;// 当前页
 	private int pageSize;// 每页多少数据
+	@SuppressWarnings("unused")
 	private int itemStart;// 起始位置
+	@SuppressWarnings("unused")
 	private int itemEnd;// 结束位置
 	/**
 	 * 默认 当前页为 第一页； 每页数量为 8

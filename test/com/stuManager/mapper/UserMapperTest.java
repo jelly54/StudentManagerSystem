@@ -1,9 +1,6 @@
 package com.stuManager.mapper;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +10,6 @@ import com.stuManager.bean.Manager;
 import com.stuManager.bean.User;
 import com.stuManager.dao.ManagerMapper;
 import com.stuManager.dao.UserMapper;
-import com.stuManager.util.Page;
 
 public class UserMapperTest {
 	 ApplicationContext applicationContext = null;
