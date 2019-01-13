@@ -44,7 +44,7 @@
 ![展示](https://github.com/jelly54/StudentManagerSystem/blob/master/screenshot/main.jpg)
 
 
-** 控制台**
+**控制台**
 
 ![控制台](https://github.com/jelly54/StudentManagerSystem/blob/master/screenshot/console.jpg)
 
